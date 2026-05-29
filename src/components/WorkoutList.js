@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { fetchWorkouts, deleteWorkout } from "../api/api"
 
 function WorkoutList({token}) {
 
     const [workouts, setWorkouts] = useState([])
 
-    const load = async () => {
+    const load = useCallback(async () => {
 
         try {
             const data = await fetchWorkouts(token)
@@ -13,7 +13,7 @@ function WorkoutList({token}) {
         } catch (err) {
             alert(err.message)
         }
-    }
+    })
 
     useEffect(() => {
         if (token) load()

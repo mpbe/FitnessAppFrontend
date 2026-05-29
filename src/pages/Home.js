@@ -29,7 +29,7 @@ function Home() {
 
     return (
 
-        <div>  
+        <div className="bg-teal-500">  
             {!token && <LoginForm setToken={setToken}/>}
 
             {token && 
