@@ -13,7 +13,7 @@ function WorkoutList({token}) {
         } catch (err) {
             alert(err.message)
         }
-    })
+    }, [token])
 
     useEffect(() => {
         if (token) load()
