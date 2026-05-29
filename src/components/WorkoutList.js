@@ -17,7 +17,7 @@ function WorkoutList({token}) {
 
     useEffect(() => {
         if (token) load()
-        }, [token]
+        }, [token, load]
     )
 
 
