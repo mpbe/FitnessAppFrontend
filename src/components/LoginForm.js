@@ -20,47 +20,51 @@ function LoginForm({link}) {
         } catch (err) {
             alert(err.message)
         }
-
     }
 
 
     return (
        
-        <div className="">
-            <h3 className="">Login</h3>
-
-            <input 
-                className=""
-                placeholder="Enter username"
-                value={username}
-                onChange={e => setUsername(e.target.value)}
-            />
-
-            <input 
-                className=""
-                placeholder="Enter password"
-                type= "password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-            />
-
-            <button
-                className=""
-                onClick={handleLogin}
-            >
-                Submit
-            </button>
-
-            <p>No Account?
-
-                <Link
-                 className=""
-                 to={link}
+        <div className="h-screen flex items-center justify-center">
+            <div className="py-5 px-10 max-w-md w-full border border-solid border-gray-50 flex flex-col gap-y-5 shadow-lg bg-white rounded-md">
+                <h3 className="text-center font-semibold text-xl">Login</h3>
+                
+                <div>
+                    <p>Username</p>
+                    <input 
+                        className="p-2 border border-gray-300 rounded-md bg-gray-100 w-full"
+                        value={username}
+                        onChange={e => setUsername(e.target.value)}
+                    />
+                </div>
+    
+                <div>
+                    <p>Password</p>
+                    <input 
+                        className="p-2 border border-gray-300 rounded-md bg-gray-100 w-full"
+                        type= "password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                    />
+                </div>
+    
+                <button
+                    className="p-2 rounded-md bg-green-500 hover:bg-green-600 text-white"
+                    onClick={handleLogin}
                 >
-
-                 Register Here
-                </Link>
-            </p>
+                    Submit
+                </button>         
+    
+                <div className="bg-slate-50 hover:underline text-center">
+                    <Link
+                        to={link}
+                    >
+    
+                        No Account? Register
+                    </Link>
+                </div>
+                
+            </div>
         </div>
     )
 }
