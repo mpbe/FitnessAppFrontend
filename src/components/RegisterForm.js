@@ -32,47 +32,57 @@ function RegisterForm({link}) {
 
     return (
 
-        <div className="">
-            <h3 className="">Register</h3>
+    <div className="h-screen flex items-center justify-center">
+        <div className="py-5 px-10 max-w-md w-full border border-solid border-gray-50 bg-white rounded-lg shadow-lg">
+            <h3 className="text-center font-semibold text-xl mb-5">Register</h3>
 
-            <form className= "" onSubmit={handleSubmit}>
+            <form className= "flex flex-col gap-y-5" onSubmit={handleSubmit}>
 
-                <input
-                    className=""
-                    placeholder="Enter username"
-                    value={form.username}
-                    onChange={e => setForm({...form, username: e.target.value})}
-                />
+                <div>
+                    <p>Username</p>
+                    <input
+                        className="p-2 border border-gray-300 rounded-md bg-gray-100 w-full"
+                        value={form.username}
+                        onChange={e => setForm({...form, username: e.target.value})}
+                    />
+                </div>
 
-                <input
-                    className=""
-                    placeholder="Enter email"
-                    value={form.email}
-                    onChange={e => setForm({...form, email: e.target.value})}
-                />
+                <div>
+                    <p>Email</p>
+                    <input
+                        className="p-2 border border-gray-300 rounded-md bg-gray-100 w-full"
+                        value={form.email}
+                        onChange={e => setForm({...form, email: e.target.value})}
+                    />
+                </div>
 
-                <input
-                    className=""
-                    placeholder="Enter password"
-                    type= "password"
-                    value={form.password}
-                    onChange={e => setForm({...form, password: e.target.value})}
-                />
+                <div>
+                    <p>Password</p>
+                    <input
+                        className="p-2 border border-gray-300 rounded-md bg-gray-100 w-full mb-1"
+                        type= "password"
+                        value={form.password}
+                        onChange={e => setForm({...form, password: e.target.value})}
+                    />
+                </div>
 
                 <button
-                    className=""
+                    className="p-2 rounded-md bg-green-500 hover:bg-green-600 text-white mb-5"
                 >
                     Submit
                 </button>
             </form>
 
-            <Link
-                to={link}
-                className=""
-            > 
-                Back to Login
-            </Link>
+            <div className="hover:underline text-center">
+                <Link
+                    to={link}
+                    className=""
+                > 
+                    Back to Login
+                </Link>
+            </div>
         </div>
+    </div>
     )
 
 }
