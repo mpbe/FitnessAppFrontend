@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { createWorkout } from "../api/api";
 
-function CreateWorkout({token, onCreated}) {
+
+function CreateWorkout({token, loadWorkouts}) {
 
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
@@ -13,7 +14,7 @@ function CreateWorkout({token, onCreated}) {
             await createWorkout(token, {name, description})
             setName("")
             setDescription("")
-            onCreated()
+            loadWorkouts()
 
         } catch (err) {
             alert(err.message)

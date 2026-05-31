@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { loginUser } from "../api/api";
+import { useNavigate, Link } from "react-router-dom";
 
-function LoginForm({setToken}) {
+function LoginForm({link}) {
+
+    const navigate = useNavigate()
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -10,7 +13,10 @@ function LoginForm({setToken}) {
 
         try{
             const loginData = await loginUser(username, password)
-            setToken(loginData.access_token)
+
+            localStorage.setItem("token", loginData.access_token)
+            navigate("/home")
+            
         } catch (err) {
             alert(err.message)
         }
@@ -44,6 +50,17 @@ function LoginForm({setToken}) {
             >
                 Submit
             </button>
+
+            <p>No Account?
+
+                <Link
+                 className=""
+                 to={link}
+                >
+
+                 Register Here
+                </Link>
+            </p>
         </div>
     )
 }

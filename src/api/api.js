@@ -71,7 +71,7 @@ export const deleteWorkout = async (token, id) => {
 }
 
 
-export const register = async (data) => {
+export const registerUser = async (data) => {
     const res = await fetch(`${API_URL}/users/`, {
         method: "POST",
         headers : { 

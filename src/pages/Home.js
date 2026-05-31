@@ -1,51 +1,58 @@
-import { useState, useEffect } from "react"
-import LoginForm from "../components/LoginForm"
+import { useState, useEffect, useCallback } from "react"
 import CreateWorkout from "../components/CreateWorkout"
 import WorkoutList from "../components/WorkoutList"
+import { useNavigate } from "react-router-dom"
+import { fetchWorkouts, deleteWorkout } from "../api/api"
+
 
 function Home() {
 
-    const [token, setToken] = useState("")
+    const navigate = useNavigate()
+    const token = localStorage.getItem("token")
+
+    const [workouts, setWorkouts] = useState([])
+
+    const loadWorkouts = useCallback(async () => {
+
+        try {
+            const data = await fetchWorkouts(token)
+            setWorkouts(data)
+        } catch (err) {
+            alert(err.message)
+        }
+    }, [token])
 
     useEffect(() => {
-        if (token) {
-            localStorage.setItem("token", token)
+        loadWorkouts()
+    }, [loadWorkouts])
+    
+
+    const handleDelete = async(id) => {
+        try {
+            await deleteWorkout(token, id)
+            loadWorkouts()
+        } catch (err) {
+            alert(err.message)
         }
     }
-    , [token]
-    )
-
-    useEffect (() => {
-            const saved = localStorage.getItem("token")
-            if (saved) setToken(saved)
-        }, []
-    )
 
 
     const handleLogout = () => {
         localStorage.removeItem("token")
-        setToken("")
+        navigate("/login");
     }
 
     return (
 
-        <div className="bg-teal-500">  
-            {!token && <LoginForm setToken={setToken}/>}
-
-            {token && 
-                <div>
-                    <button
-                        onClick={handleLogout}
-                    >
-                        Logout
-                    </button>
-
-                    <CreateWorkout token={token} onCreated={() => window.location.reload()}/>
-                    <WorkoutList token={token}/>
-                </div>
-            }
+        <div>
+            <button
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+            <CreateWorkout token={token} loadWorkouts={loadWorkouts}/>
+            <WorkoutList workouts={workouts} onDelete={handleDelete}/>
         </div>
-       
 
     )
 

@@ -1,36 +1,4 @@
-import { useState, useEffect, useCallback } from "react"
-import { fetchWorkouts, deleteWorkout } from "../api/api"
-
-function WorkoutList({token}) {
-
-    const [workouts, setWorkouts] = useState([])
-
-    const load = useCallback(async () => {
-
-        try {
-            const data = await fetchWorkouts(token)
-            setWorkouts(data)
-        } catch (err) {
-            alert(err.message)
-        }
-    }, [token])
-
-    useEffect(() => {
-        if (token) load()
-        }, [token, load]
-    )
-
-
-    const handleDelete = async(id) => {
-        try {
-            await deleteWorkout(token, id)
-            load()
-        } catch (err) {
-            alert(err.message)
-        }
-    }
-
-    
+function WorkoutList({workouts, onDelete}) {
 
     return (
 
@@ -45,7 +13,7 @@ function WorkoutList({token}) {
                     <p>{w.description}</p>
 
                     <button
-                    onClick={() => handleDelete(w.id)}
+                    onClick={() => onDelete(w.id)}
                     >Delete</button>
                 </div>
             ))}
