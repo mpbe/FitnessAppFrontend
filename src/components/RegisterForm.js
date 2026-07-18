@@ -39,7 +39,7 @@ function RegisterForm({link}) {
             <form className= "flex flex-col gap-y-5" onSubmit={handleSubmit}>
 
                 <div>
-                    <p>Username</p>
+                    <label>Username</label>
                     <input
                         className="p-2 border border-gray-300 rounded-md bg-gray-100 w-full"
                         value={form.username}
@@ -48,16 +48,17 @@ function RegisterForm({link}) {
                 </div>
 
                 <div>
-                    <p>Email</p>
+                    <label>Email</label>
                     <input
                         className="p-2 border border-gray-300 rounded-md bg-gray-100 w-full"
+                        type="email"
                         value={form.email}
                         onChange={e => setForm({...form, email: e.target.value})}
                     />
                 </div>
 
                 <div>
-                    <p>Password</p>
+                    <label>Password</label>
                     <input
                         className="p-2 border border-gray-300 rounded-md bg-gray-100 w-full mb-1"
                         type= "password"
@@ -69,7 +70,7 @@ function RegisterForm({link}) {
                 <button
                     className="p-2 rounded-md bg-green-500 hover:bg-green-600 text-white mb-5"
                 >
-                    Submit
+                    Register
                 </button>
             </form>
 

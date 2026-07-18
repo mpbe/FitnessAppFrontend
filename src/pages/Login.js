@@ -6,7 +6,7 @@ function Login() {
         
         <div>
             <LoginForm link="/register"/>
-        </div>        
+        </div>
     )
 }
 
