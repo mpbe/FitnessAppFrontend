@@ -22,25 +22,31 @@ function CreateWorkout({token, loadWorkouts}) {
     }
 
     return (
-        <div className="">
-            <h3 className="">Create Workout</h3>
+        <div className="py-5 px-10 flex flex-col gap-y-5 bg-white shadow-lg rounded-lg max-w-lg w-full">
+            <h3 className="text-center font-semibold text-lg">
+                Create Workout
+            </h3>
 
-            <input 
-                className=""
-                placeholder="Enter name"
-                value={name}
-                onChange={e => setName(e.target.value)}
-            />
+            <div>
+                <p>Name</p>
+                <input 
+                    className="p-2 border border-gray-200 rounded-md w-full"
+                    value={name}
+                    onChange={e => setName(e.target.value)}
+                />
+            </div>
 
-            <input 
-                className=""
-                placeholder="Enter description"
-                value={description}
-                onChange={e => setDescription(e.target.value)}
-            />
+            <div>
+                <p>Description</p>
+                <input 
+                    className="p-2 border border-gray-200 rounded-md w-full"
+                    value={description}
+                    onChange={e => setDescription(e.target.value)}
+                />
+            </div>
 
             <button
-                className=""
+                className="py-2 px-4 rounded-md bg-green-500 hover:bg-green-600 text-white self-start"
                 onClick={handleCreate}
             >
                 Submit
