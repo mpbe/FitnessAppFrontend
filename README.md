@@ -2,6 +2,10 @@
 
 A React frontend for the FitnessApp project. It provides user registration, workout management and communicates with the FastAPI backent using JWT authentication.
 
+## Deployment
+
+https://fitness-app-frontend-lilac.vercel.app/
+
 
 ## Features
 
